@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="Css/Admin/AdminHome.css">
+<!-- admin header -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div  class="col-1">
+
+        </div>
+        <div class="col-10">
+          <div class="container-xl">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-8"><h1>Admin <b>Control</b></h1></div>
+                            <div class="col-sm-8"><h2>User <b>Details</b></h2></div>
+                            <div class="col-sm-4">
+                                <div class="search-box">
+                                    <i class="material-icons">&#xE8B6;</i>
+                                    <!-- <input id="gfg" type="text" class="form-control" placeholder="Search&hellip;"> -->
+                                    <form>
+                                        <input type="text" name="search" placeholder="Name or Email">
+                                    <button class="search-btn btn btn-secondary fa" value="search">Search</button>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% if(details!=null) { %>
+                      <table class="table" >
+                              <tr>
+                                  <th>Name</th>
+                                  <th>Email</th>
+                                  <th>Actions</th>
+                              </tr>
+                              <tbody id="geeks">
+                                <% details.forEach(function(user){ %>
+                                  <tr>
+                                      <td><%= user.name%></td>
+                                      <td><%= user.email%></td>
+                                      <td>
+                                        <a href="/edit-user?id=<%= user._id%>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a href="/delete-user?id=<%= user._id%>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                      </td>
+                                  </tr>
+                              <% }) %>
+                              </tbody>
+                      </table>
+                    <% } %>
+                    <div class="col-sm-4">
+                      <a href="/add-user"><button class="btn btn-info fa fa-plus">Add User</button></a>
+                      <a href="/adminlogout"><button class="btn btn-danger fa ml-5">Logout</button></a>
+                  </div>
+                </div>
+            </div>  
+        </div>     
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<!-- <script>
+  $(document).ready(function() {
+      $("#gfg").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#geeks tr").filter(function() {
+              $(this).toggle($(this).text()
+              .toLowerCase().indexOf(value) > -1)
+          });
+      });
+  });
+</script> -->
+</html>
